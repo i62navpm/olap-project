@@ -1,0 +1,12 @@
+{
+  "npmClient": "yarn",
+  "packages": ["packages/*"],
+  "command": {
+    "version": {
+      "allowBranch": "master"
+    },
+    "publish": {
+      "conventionalCommits": true
+    }
+  }
+}
