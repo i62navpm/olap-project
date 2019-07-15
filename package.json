@@ -1,0 +1,10 @@
+{
+  "name": "olap-project",
+  "version": "0.0.1",
+  "description": "Project based in online analytical processing system",
+  "main": "index.js",
+  "repository": "https://github.com/i62navpm/olap-project",
+  "author": "Manuel Navarro Pérez",
+  "license": "MIT",
+  "private": true
+}
