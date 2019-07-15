@@ -1,0 +1,11 @@
+{
+  "name": "@i62navpm/cloud-sdk",
+  "version": "0.0.1",
+  "main": "./src/index.js",
+  "repository": "https://github.com/i62navpm/olap-project",
+  "author": "Manuel Navarro Pérez",
+  "license": "MIT",
+  "dependencies": {
+    "@google-cloud/bigquery": "^4.1.4"
+  }
+}
