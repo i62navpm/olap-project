@@ -1,0 +1,8 @@
+{
+  "name": "@i62navpm/static-lists",
+  "version": "0.0.1",
+  "main": "index.js",
+  "repository": "https://github.com/i62navpm/olap-project",
+  "author": "Manuel Navarro Pérez",
+  "license": "MIT"
+}
