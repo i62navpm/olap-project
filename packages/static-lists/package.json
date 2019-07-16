@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@i62navpm/cloud-sdk": "0.0.1",
+    "@i62navpm/specialty-codes": "0.0.1",
     "consola": "^2.9.0"
   },
   "devDependencies": {
