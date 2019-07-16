@@ -4,5 +4,16 @@
   "main": "index.js",
   "repository": "https://github.com/i62navpm/olap-project",
   "author": "Manuel Navarro Pérez",
-  "license": "MIT"
+  "license": "MIT",
+  "scripts": {
+    "dev": "nodemon --inspect src/index.js"
+  },
+  "dependencies": {
+    "@i62navpm/cloud-sdk": "0.0.1",
+    "@i62navpm/specialty-codes": "0.0.1",
+    "consola": "^2.9.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1"
+  }
 }
