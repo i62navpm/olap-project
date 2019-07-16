@@ -6,6 +6,7 @@
   "author": "Manuel Navarro Pérez",
   "license": "MIT",
   "dependencies": {
-    "@google-cloud/bigquery": "^4.1.4"
+    "@google-cloud/bigquery": "^4.1.4",
+    "consola": "^2.9.0"
   }
 }
