@@ -2,7 +2,7 @@ const { bigQuery } = require('@i62navpm/cloud-sdk')
 const { specialtyCodes } = require('@i62navpm/specialty-codes')
 const consola = require('consola')
   .withDefaults({ badge: true })
-  .withTag('lists-static')
+  .withTag('lists-dynamic')
 
 async function init(datasets = []) {
   for (const { dataset, tables, schema } of datasets) {
@@ -27,18 +27,40 @@ async function init(datasets = []) {
 
 init([
   {
-    dataset: 'normalList',
-    tables: specialtyCodes.primary.normalSpecialties,
-    schema: require('../schemas/normalList'),
+    dataset: 'assignmentList',
+    tables: [
+      ...specialtyCodes.primary.bilingualSpecialties,
+      ...specialtyCodes.primary.normalSpecialties,
+    ],
+    schema: require('../schemas/assignmentList'),
   },
   {
-    dataset: 'voluntaryList',
-    tables: specialtyCodes.primary.normalSpecialties,
-    schema: require('../schemas/voluntaryList'),
+    dataset: 'citationList',
+    tables: [
+      ...specialtyCodes.primary.bilingualSpecialties,
+      ...specialtyCodes.primary.normalSpecialties,
+    ],
+    schema: require('../schemas/citationList'),
   },
   {
-    dataset: 'bilingualList',
-    tables: specialtyCodes.primary.bilingualSpecialties,
-    schema: require('../schemas/bilingualList'),
+    dataset: 'citationVoluntaryList',
+    tables: specialtyCodes.primary.normalSpecialties,
+    schema: require('../schemas/citationVoluntaryList'),
+  },
+  {
+    dataset: 'incorporateList',
+    tables: [
+      ...specialtyCodes.primary.bilingualSpecialties,
+      ...specialtyCodes.primary.normalSpecialties,
+    ],
+    schema: require('../schemas/incorporateList'),
+  },
+  {
+    dataset: 'nextCitationList',
+    tables: [
+      ...specialtyCodes.primary.bilingualSpecialties,
+      ...specialtyCodes.primary.normalSpecialties,
+    ],
+    schema: require('../schemas/nextCitationList'),
   },
 ])
