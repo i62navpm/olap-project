@@ -16,9 +16,19 @@ async function init(datasets = []) {
     consola.success(`Dataset '${dataset}' is generated`)
 
     consola.info(`Generating tables for '${dataset}' dataset`)
+
+    const options = {
+      timePartitioning: {
+        type: 'DAY',
+        field: 'date',
+      },
+      requirePartitionFilter: true,
+      clustering: { fields: ['nif', 'apellidosynombre'] },
+    }
+
     await Promise.all(
       tables.map(async ({ id, description }) =>
-        bigQuery.tables.create(dataset, id, { schema, description })
+        bigQuery.tables.create(dataset, id, { schema, description, ...options })
       )
     )
     consola.success(`Tables for '${dataset}' are generated`)
