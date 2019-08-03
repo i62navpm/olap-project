@@ -3,7 +3,7 @@
     "es6": true,
     "node": true
   },
-  "extends": ["plugin:prettier/recommended", "eslint:recommended"],
+  "extends": ["prettier", "eslint:recommended"],
   "globals": {
     "Atomics": "readonly",
     "SharedArrayBuffer": "readonly"
