@@ -5,4 +5,5 @@ const bigQuery = new BigQuery(credentials)
 exports.bigQuery = {
   datasets: require('./bigQuery/datasets')(bigQuery),
   tables: require('./bigQuery/tables')(bigQuery),
+  queries: require('./bigQuery/queries')(bigQuery),
 }
