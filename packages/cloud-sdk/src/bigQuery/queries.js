@@ -18,7 +18,6 @@ module.exports = bigquery => {
 
     const options = {
       query,
-      location: 'US',
       params: { limit: paginate.limit, page: paginate.page * paginate.limit },
     }
     try {
@@ -37,7 +36,6 @@ module.exports = bigquery => {
     `
     const options = {
       query,
-      location: 'US',
       params: { name, nif },
     }
     try {
@@ -61,7 +59,6 @@ module.exports = bigquery => {
     `
     const options = {
       query,
-      location: 'US',
       params: { name, nif, date: dateInitial },
     }
     try {

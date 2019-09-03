@@ -21,7 +21,7 @@ module.exports = bigquery => {
     }
   }
 
-  async function create(datasetId, options = { location: 'US' }) {
+  async function create(datasetId, options = { location: 'EU' }) {
     try {
       consola.log(`Creating dataset "${datasetId}"`)
       return await bigquery.createDataset(datasetId, options)
