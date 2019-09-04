@@ -3,6 +3,25 @@ const consola = require('consola')
   .withTag('bigQuery/queries')
 
 module.exports = bigquery => {
+  async function existsDateColumn(data = {}) {
+    const { datasetId, tableId } = data
+
+    const query = `SELECT data_type
+    FROM ${datasetId}.INFORMATION_SCHEMA.COLUMNS
+    where table_name="${tableId}" and data_type = "DATE"`
+
+    const options = {
+      query,
+    }
+
+    try {
+      consola.log('Running query')
+      return await bigquery.query(options)
+    } catch (err) {
+      consola.error(err.message)
+    }
+  }
+
   async function getDatesList(data = {}) {
     const { datasetId, tableId } = data
 
@@ -14,7 +33,8 @@ module.exports = bigquery => {
 
     try {
       consola.log('Running query')
-      return await bigquery.query(options)
+      const [dates] = await existsDateColumn(data)
+      return dates.length ? await bigquery.query(options) : Promise.resolve([])
     } catch (err) {
       consola.error(err.message)
     }
