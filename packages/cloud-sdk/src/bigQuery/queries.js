@@ -3,6 +3,23 @@ const consola = require('consola')
   .withTag('bigQuery/queries')
 
 module.exports = bigquery => {
+  async function getDatesList(data = {}) {
+    const { datasetId, tableId } = data
+
+    const query = `SELECT DISTINCT(date) FROM ${datasetId}.${tableId} WHERE date <= CURRENT_DATE()`
+
+    const options = {
+      query,
+    }
+
+    try {
+      consola.log('Running query')
+      return await bigquery.query(options)
+    } catch (err) {
+      consola.error(err.message)
+    }
+  }
+
   async function getPaginateList(
     datasetId,
     tableId,
@@ -74,5 +91,6 @@ module.exports = bigquery => {
     getPaginateList,
     getPosition,
     getMovementsByDate,
+    getDatesList,
   }
 }
