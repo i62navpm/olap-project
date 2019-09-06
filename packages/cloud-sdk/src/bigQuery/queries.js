@@ -53,10 +53,9 @@ module.exports = bigquery => {
     const query = `with subQ1 as (SELECT * FROM ${datasetId}.${tableId} 
     WHERE apellidosynombre LIKE "${filter.name}%" ${
       filter.date ? `AND date = "${filter.date}"` : ''
-    } 
-    ORDER BY ${sort} ${order} LIMIT @limit OFFSET @page)
+    })
     
-    select count(*) as total, array_agg(subQ1) as data from subQ1
+    select count(*) as total, array (SELECT AS STRUCT * from subQ1 ORDER BY ${sort} ${order} LIMIT @limit OFFSET @page) as data from subQ1
     `
 
     const options = {
