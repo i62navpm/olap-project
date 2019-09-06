@@ -45,13 +45,18 @@ module.exports = bigquery => {
     tableId,
     {
       paginate = { page: 0, limit: 10 },
-      filter = { name: '' },
+      filter = { name: '', date: '' },
       sort = 'orden',
     } = {}
   ) {
-    const query = `SELECT * FROM ${datasetId}.${tableId} 
-    ${filter.name ? `WHERE apellidosynombre LIKE "${filter.name}%"` : ''} 
-    ORDER BY ${sort} LIMIT @limit OFFSET @page`
+    const query = `with subQ1 as (SELECT * FROM ${datasetId}.${tableId} 
+    WHERE apellidosynombre LIKE "${filter.name}%" ${
+      filter.date ? `AND date = "${filter.date}"` : ''
+    } 
+    ORDER BY ${sort} LIMIT @limit OFFSET @page)
+    
+    select count(*) as total, array_agg(subQ1) as data from subQ1
+    `
 
     const options = {
       query,
